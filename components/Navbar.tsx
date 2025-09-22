@@ -1,6 +1,9 @@
+'use client'
+
 import React from "react";
 import { FaShieldAlt } from "react-icons/fa";
 import Button from "../ui/Button";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -11,10 +14,11 @@ export default function Navbar() {
       </div>
       <div className="space-x-4">
         <Button className="cursor-pointer text-white transition-colors hover:text-blue-200">
-          Login
+          <Link href="/login" target="_blank" rel="noopener noreferrer">Login</Link>
+          
         </Button>
         <Button className="cursor-pointer rounded-md bg-white px-4 py-2 font-semibold whitespace-nowrap text-blue-600 transition-colors hover:bg-blue-50 md:px-6">
-          Sign Up
+          <Link href="/signup" target="_blank" rel="noopener noreferrer">Sign Up</Link>
         </Button>
       </div>
     </nav>

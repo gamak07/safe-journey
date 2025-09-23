@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
-import Hero from "../features/homepage/Hero";
-import HowItWork from "../features/homepage/HowItWork";
+import Hero from "../features/landing_page/Hero";
+import HowItWork from "../features/landing_page/HowItWork";
 
 export default function Home() {
   return (

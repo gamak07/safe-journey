@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../ui/Button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -13,13 +14,13 @@ export default function Hero() {
           Advanced trip tracking, real-time safety alerts, and community-driven
           security reports to keep you protected on every journey.
         </p>
-        <Button className="cursor-pointer rounded-md bg-white px-6 py-3 text-base font-semibold whitespace-nowrap text-blue-600 transition-colors hover:bg-blue-500 md:px-8 md:py-4 md:text-lg">
-          Get Started Free
+        <Button className="cursor-pointer rounded-md bg-white px-6 py-3 text-base font-semibold whitespace-nowrap text-blue-600 transition-colors hover:text-blue-500 md:px-8 md:py-4 md:text-lg">
+          <Link href="/signup" target="_blank">Get Started Free</Link>
         </Button>
       </div>
-      <div className="relative flex-1 h-[500px]">
+      <div className="relative h-[500px] flex-1">
         <Image
-          className="absolute object-cover object-top "
+          className="absolute object-cover object-top"
           src="/hero-image.jpg"
           alt="Hero Image"
           fill

@@ -4,7 +4,7 @@ import { FaCog } from "react-icons/fa";
 
 export default function Header() {
   return (
-    <div className="bg-white px-6 py-4 shadow-sm">
+    <header className="bg-white px-6 py-4 shadow-sm">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600">
@@ -22,6 +22,6 @@ export default function Header() {
           <FaCog className="text-xl" />
         </Button>
       </div>
-    </div>
+    </header>
   );
 }

@@ -31,6 +31,8 @@ export default function RootLayout({
         className={`${inter.variable} ${poppins.variable} antialiased`}
       >
         {children}
+
+        <div id="portal-root"></div>
       </body>
     </html>
   );

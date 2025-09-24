@@ -15,3 +15,15 @@ body {
   font-family: var(--font-poppins);
 }
 
+
+/* Tailwind style */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE + Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+

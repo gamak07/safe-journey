@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Toggle from "../../ui/Toggle";
 import { FaSave } from "react-icons/fa";
+import Button from "../../ui/Button";
 
 const notificationTypes = [
   {
@@ -177,13 +178,13 @@ export default function AlertSettings() {
           </div>
         </div>
         <hr className="my-6 border-gray-200" />
-        <button
+        <Button
           type="button"
           className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 py-4 text-base font-semibold text-white transition-colors hover:bg-blue-700"
         >
           <FaSave />
           Save Alert Settings
-        </button>
+        </Button>
       </div>
     </section>
   );

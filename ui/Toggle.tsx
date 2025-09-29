@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 interface ToggleProps {
   checked: boolean;
   onChange: () => void;
@@ -10,7 +12,7 @@ export default function Toggle({
   disabled = false,
 }: ToggleProps) {
   return (
-    <button
+    <Button
       type="button"
       onClick={onChange}
       disabled={disabled}
@@ -20,6 +22,6 @@ export default function Toggle({
       <span
         className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${checked ? "translate-x-6" : "translate-x-1"}`}
       />
-    </button>
+    </Button>
   );
 }

@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { FaBell, FaHome, FaMapMarkedAlt, FaUser } from "react-icons/fa";
 
-const links = [];
-
 export default function OverviewLayoutNavbar() {
   const pathname = usePathname();
   let currentPath = pathname.split("/").pop();

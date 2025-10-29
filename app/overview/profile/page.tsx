@@ -6,13 +6,25 @@ import NotificationPreferences from "../../../features/profile_page/Notification
 import PersonalInformation from "../../../features/profile_page/PeronalInformation";
 import SecuritySettings from "../../../features/profile_page/SecuritySettings";
 import UserInformation from "../../../features/profile_page/UserInformation";
+import { getAuthenticatedUser } from "../../../lib/auth";
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+  let user = null; 
+  let error = null
+
+  
+    try {
+      user = await getAuthenticatedUser();
+    } catch (err:any) {
+      console.error(err.message)
+      error= err.message
+    }
+
   return <main>
     <Header />
     <section className="p-6">
-      <UserInformation />
-      <PersonalInformation />
+      <UserInformation user={user} />
+      <PersonalInformation user={user} />
       <EmergencyContact />
       <AppPreferences />
       <SecuritySettings />

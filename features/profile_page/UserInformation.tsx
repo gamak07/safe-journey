@@ -3,7 +3,13 @@ import React from "react";
 import Button from "../../ui/Button";
 import { FaCamera, FaCheckCircle, FaEdit, FaEnvelope, FaPhone } from "react-icons/fa";
 
-export default function UserInformation() {
+type User = {
+  fullname?:string
+  email?:string
+  phonenumber?:string
+}
+
+export default function UserInformation({user}:{user:User | null}) {
   return (
     <div className="mb-6 flex flex-col items-center gap-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm md:flex-row">
       {/* Profile Image and Camera Icon */}
@@ -24,17 +30,17 @@ export default function UserInformation() {
       {/* User Info */}
       <div className="flex-1 flex-col gap-6 md:flex-row md:items-center">
         <h2 className="mb-1 text-xl font-bold text-gray-900 md:text-2xl">
-          Alex Thompson
+          {user?.fullname}
         </h2>
-        <p className="mb-2 text-base text-gray-600">@alexthompson</p>
+        <p className="mb-2 text-base text-gray-600">@{user?.fullname?.split(" ")[0].toLowerCase()}</p>
         <div className="space-y-1 text-sm text-gray-600">
           <div className="flex items-center space-x-2">
             <FaEnvelope className="text-gray-400" />
-            <span>alex.thompson@email.com</span>
+            <span>{user?.email}</span>
           </div>
           <div className="flex items-center space-x-2">
             <FaPhone className="text-gray-400" />
-            <span>+1 (555) 234-5678</span>
+            <span>{user?.phonenumber}</span>
           </div>
           <div className="flex items-center space-x-2">
             <FaCheckCircle className="text-green-500" />

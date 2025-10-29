@@ -2,12 +2,18 @@
 
 import React, { useState } from "react";
 
-export default function PersonalInformation() {
+type User = {
+  fullname?:string
+  email?:string
+  phonenumber?:string
+}
+
+export default function PersonalInformation({user}:{user:User | null}) {
   const [form, setForm] = useState({
-    name: "Alex Thompson",
-    username: "alexthompson",
-    email: "alex.thompson@email.com",
-    phone: "+1 (555) 234-5678",
+    name: user?.fullname,
+    username: `@${user?.fullname?.split(' ')[0].toLowerCase()}`,
+    email: user?.email,
+    phone: user?.phonenumber,
     address: "123 Main Street, Apt 4B, New York, NY 10001",
   });
 

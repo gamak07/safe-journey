@@ -1,14 +1,16 @@
 // sign up
 
-// import { supabase } from "./supabase";
-
-// export const signup = async () => {
-//   const { data, error } = await supabase.auth.signUp({
-//     phone: "1234567890",
-//     email: "someone@email.com",
-//     password: "QnXXYELhAtnoUhanCTYm",
-//   });
-// };
+export const signup = async (data: {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+  conPassword: string;
+  agree: boolean;
+}) => {
+  const { name, email, phone, password, conPassword, agree } = data;
+  // Perform signup logic here
+};
 
 // sign in
 

@@ -39,7 +39,8 @@ export async function POST(req: Request) {
 
     // Return success payload as-is
     return NextResponse.json(result, { status: backendRes.status });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Something went wrong";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

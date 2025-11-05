@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
     // Map identifier to backend expected field. If your backend expects email/phone specifically,
     // you may need to detect and send the right field. Here we send `{ email: identifier }`.
-    const backendRes = await fetch(`${BACKEND}/api/v1/auth/login`, {
+    const backendRes = await fetch(`${BACKEND}/api/v1/auths/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: identifier, password }),

@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // 2. Define your protected routes (routes that require a token)
-  const protectedRoutes = ["/overview"];
+  const protectedRoutes = ["/overview", "/tracking"];
 
   // 3. Define routes that a logged-in user should NOT see
   const publicOnlyRoutes = ["/login", "/signup"];

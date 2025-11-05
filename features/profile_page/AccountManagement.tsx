@@ -1,3 +1,6 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaChevronRight, FaCreditCard, FaCrown, FaDatabase, FaSignOutAlt, FaTrash } from 'react-icons/fa';
 
@@ -27,6 +30,11 @@ const accountItems = [
 ];
 
 export default function AccountManagement() {
+  const router = useRouter()
+  const handleLogout = async ()=>{
+    await fetch('/api/logout',{method:'POST'});
+    router.push('/login');
+  }
   return (
     <div className="mb-24 rounded-lg border border-gray-200 bg-white p-6 shadow-sm ">
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Account Management</h2>
@@ -48,11 +56,11 @@ export default function AccountManagement() {
           </div>
         ))}
       </div>
-      <button className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-lg text-base transition-colors mb-4">
+      <button className="cursor-pointer w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-lg text-base transition-colors mb-4" onClick={handleLogout}>
         <FaSignOutAlt className="text-lg" />
         Logout
       </button>
-      <button className="w-full flex items-center justify-center gap-2 border-2 border-red-200 text-red-600 font-semibold py-4 rounded-lg text-base transition-colors bg-white hover:bg-red-50">
+      <button className="cursor-pointer w-full flex items-center justify-center gap-2 border-2 border-red-200 text-red-600 font-semibold py-4 rounded-lg text-base transition-colors bg-white hover:bg-red-50">
         <FaTrash className="text-lg" />
         Delete Account
       </button>

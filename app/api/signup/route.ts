@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       passwordConfirm: conPassword, // backend expects passwordConfirm
     };
 
-    const backendRes = await fetch(`${BACKEND}/api/v1/auth/signup`, {
+    const backendRes = await fetch(`${BACKEND}/api/v1/auths/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(backendPayload),

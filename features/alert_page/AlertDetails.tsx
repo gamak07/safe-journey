@@ -25,14 +25,16 @@ export default function AlertDetails({ alert }: AlertDetailsProps) {
             <p className="text-gray-900">{alert?.estDuration}</p>
           </div>
         </div>
-        <div className="flex md:space-x-3 space-y-3 flex-col md:flex-row">
-          <Button className="w-full flex cursor-pointer items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium whitespace-nowrap text-white transition-colors hover:bg-blue-700">
-            <FaRoute className="mr-2" /> Find Alternative Route
-          </Button>
-          <Button className=" w-full flex cursor-pointer items-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium whitespace-nowrap text-gray-700 transition-colors hover:bg-gray-50">
-            <FaShare className="mr-2" /> Share Alert
-          </Button>
-        </div>
+        {alert?.risk !== "low" && (
+          <div className="flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-3">
+            <Button className="flex w-full md:w-fit cursor-pointer items-center !rounded-md bg-blue-600 px-4 py-2 text-sm font-medium whitespace-nowrap text-white transition-colors hover:bg-blue-700">
+              <FaRoute className="mr-2" /> Find Alternative Route
+            </Button>
+            <Button className="flex w-full md:w-fit cursor-pointer items-center !rounded-md border border-gray-300 px-4 py-2 text-sm font-medium whitespace-nowrap text-gray-700 transition-colors hover:bg-gray-50">
+              <FaShare className="mr-2" /> Share Alert
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

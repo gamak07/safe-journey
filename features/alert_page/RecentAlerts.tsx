@@ -62,7 +62,7 @@ export default function RecentAlerts() {
   };
   return (
     <div className="mb-6">
-      <h2 className="mb-4 md:text-lg text-sm font-semibold text-gray-900">
+      <h2 className="mb-4 text-sm font-semibold text-gray-900 md:text-lg">
         Recent Alerts
       </h2>
       <div className="space-y-4">
@@ -76,13 +76,13 @@ export default function RecentAlerts() {
               <div className="flex items-start justify-between">
                 <div className="flex flex-1 items-start space-x-4">
                   <div
-                    className={`rounded-lg md:p-3 p-2 text-lg ${alert.risk === "high" ? "bg-red-50 text-red-700" : alert.risk === "medium" ? "bg-yellow-50 text-yellow-700" : "bg-blue-50 text-blue-700"}`}
+                    className={`rounded-lg p-2 text-lg md:p-3 ${alert.risk === "high" ? "bg-red-50 text-red-700" : alert.risk === "medium" ? "bg-yellow-50 text-yellow-700" : "bg-blue-50 text-blue-700"}`}
                   >
                     {alert.icon}
                   </div>
                   <div className="flex-1">
                     <div className="mb-2 flex items-center space-x-2 md:space-x-3">
-                      <h3 className="font-semibold text-xs md:text-lg text-gray-900">
+                      <h3 className="text-xs font-semibold text-gray-900 md:text-lg">
                         {alert.title}
                       </h3>
                       <span
@@ -91,7 +91,9 @@ export default function RecentAlerts() {
                         {alert.risk}
                       </span>
                     </div>
-                    <p className="mb-2 text-gray-600 text-sm md:text-lg ">{alert.cause}</p>
+                    <p className="mb-2 text-sm text-gray-600 md:text-lg">
+                      {alert.cause}
+                    </p>
                     <div className="flex items-center space-x-4 text-sm text-gray-500">
                       <span className="flex items-center whitespace-nowrap">
                         <FaClock className="mr-1" /> {alert.time}
@@ -105,7 +107,11 @@ export default function RecentAlerts() {
                   </div>
                 </div>
                 <Button>
-                  {selectedAlert === alert ? <FaChevronUp className="ml-4 text-gray-400" /> : <FaChevronDown className="ml-4 text-gray-400" />}
+                  {selectedAlert === alert ? (
+                    <FaChevronUp className="ml-4 text-gray-400" />
+                  ) : (
+                    <FaChevronDown className="ml-4 text-gray-400" />
+                  )}
                 </Button>
               </div>
             </div>

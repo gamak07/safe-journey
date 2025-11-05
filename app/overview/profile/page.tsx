@@ -13,12 +13,18 @@ export default async function ProfilePage() {
   let error = null
 
   
+
+  
     try {
       user = await getAuthenticatedUser();
     } catch (err:unknown) {
       console.error(err instanceof Error ? err.message : "Unknown error");
       error= err instanceof Error ? err.message : "Unknown error";
     }
+
+
+    console.log(user);
+    
 
   return <main>
     <Header />

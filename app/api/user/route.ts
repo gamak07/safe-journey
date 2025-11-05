@@ -15,7 +15,7 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const backendRes = await fetch(`${BACKEND}/api/v1/auth/me`, {
+    const backendRes = await fetch(`${BACKEND}/api/v1/auths/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

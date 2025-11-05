@@ -1,6 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Button from "../../ui/Button";
 import { FaCog } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 type User = {
   fullname: string;
@@ -8,23 +11,34 @@ type User = {
   // ... any other user fields
 };
 export default function Header({ user }: { user: User | null }) {
-  console.log(user);
+  const router = useRouter();
+  const [rotate, setRotate] = useState<boolean>(false)
 
-  const lastName = user?.fullname ? user?.fullname.split(" ").slice(-1).join(" ") : "User";
+  
+  const handleLogout = async () => {
+    setRotate((prev) => !prev);
+    await fetch("/api/logout", { method: "POST" });
+    router.push("/login");
+  };
+
+  const lastName = user?.fullname
+    ? user?.fullname.split(" ").slice(-1).join(" ")
+    : "User";
   function getInitials(fullname: string) {
-  if (fullname) return "";
-  const parts = fullname.trim().split(" ").filter(Boolean);
-  if (parts.length === 1) return parts[0][0].toUpperCase();
-  return (parts[0][0] + parts[1][0]).toUpperCase();
-}
-
+    if (fullname) return "";
+    const parts = fullname.trim().split(" ").filter(Boolean);
+    if (parts.length === 1) return parts[0][0].toUpperCase();
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  }
 
   return (
     <header className="bg-white px-6 py-4 shadow-sm">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600">
-            <span className="font-semibold text-white">{getInitials(user?.fullname || 'user')}</span>
+            <span className="font-semibold text-white">
+              {getInitials(user?.fullname || "user")}
+            </span>
           </div>
           <div>
             <h1 className="text-lg font-semibold text-gray-900">
@@ -34,7 +48,10 @@ export default function Header({ user }: { user: User | null }) {
           </div>
         </div>
 
-        <Button className="cursor-pointer text-gray-400 hover:text-gray-600">
+        <Button
+          className={`cursor-pointer text-gray-400 hover:text-gray-600 ${rotate ? "rotate-180" : ""}`}
+          onClick={handleLogout}
+        >
           <FaCog className="text-xl" />
         </Button>
       </div>

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Button from "../../ui/Button";
 import { useRouter } from "next/navigation";
 import { login } from "../../hooks/useLogin";
-import { getUser } from "../../hooks/useUser";
 
 export default function Login() {
   const router = useRouter();

@@ -17,7 +17,7 @@ export async function getAuthenticatedUser() {
   }
 
   // 2. Fetch the external backend
-  const backendRes = await fetch(`${BACKEND}/api/v1/auth/me`, {
+  const backendRes = await fetch(`${BACKEND}/api/v1/auths/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

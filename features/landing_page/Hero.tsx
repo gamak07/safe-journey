@@ -15,7 +15,7 @@ export default function Hero() {
           security reports to keep you protected on every journey.
         </p>
         <Button className="cursor-pointer rounded-md bg-white px-6 py-3 text-base font-semibold whitespace-nowrap text-blue-600 transition-colors hover:text-blue-500 md:px-8 md:py-4 md:text-lg">
-          <Link href="/signup" target="_blank">Get Started Free</Link>
+          <Link href="/signup">Get Started Free</Link>
         </Button>
       </div>
       <div className="relative h-[500px] flex-1">

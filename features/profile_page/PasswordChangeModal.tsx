@@ -1,6 +1,7 @@
 import React from "react";
 import Portal from "../../ui/Portal";
 import { FaTimes } from "react-icons/fa";
+import Button from "../../ui/Button";
 
 export default function PasswordChangeModal({
   onClose,
@@ -15,12 +16,12 @@ export default function PasswordChangeModal({
             <h3 className="text-lg font-semibold text-gray-900">
               Change Password
             </h3>
-            <button
+            <Button
               className="cursor-pointer text-gray-400 hover:text-gray-600"
               onClick={onClose}
             >
               <FaTimes />
-            </button>
+            </Button>
           </div>
           <div className="space-y-4">
             <div>
@@ -61,15 +62,15 @@ export default function PasswordChangeModal({
             </div>
           </div>
           <div className="mt-6 flex flex-col space-y-3 space-x-0 md:flex-row md:space-y-0 md:space-x-3">
-            <button className="flex-1 cursor-pointer !rounded-md bg-blue-600 py-2 font-medium whitespace-nowrap text-white transition-colors hover:bg-blue-700">
+            <Button className="flex-1 cursor-pointer !rounded-md bg-blue-600 py-2 font-medium whitespace-nowrap text-white transition-colors hover:bg-blue-700">
               Update Password
-            </button>
-            <button
+            </Button>
+            <Button
               className="flex-1 cursor-pointer !rounded-md bg-gray-100 py-2 font-medium whitespace-nowrap text-gray-700 transition-colors hover:bg-gray-200"
               onClick={onClose}
             >
               Cancel
-            </button>
+            </Button>
           </div>
         </div>
       </div>

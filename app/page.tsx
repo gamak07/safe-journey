@@ -4,7 +4,7 @@ import HowItWork from "../features/landing_page/HowItWork";
 
 export default function Home() {
   return (
-    <main className="w-full max-w-[1440px] mx-auto">
+    <main className="w-full max-w-[1440px] mx-auto bg-gray-50">
      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-800">
       <Navbar />
       <Hero />

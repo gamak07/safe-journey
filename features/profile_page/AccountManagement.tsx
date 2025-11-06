@@ -1,69 +1,96 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import React from 'react';
-import { FaChevronRight, FaCreditCard, FaCrown, FaDatabase, FaSignOutAlt, FaTrash } from 'react-icons/fa';
+import { useRouter } from "next/navigation";
+import React from "react";
+import {
+  FaChevronRight,
+  FaCreditCard,
+  FaCrown,
+  FaDatabase,
+  FaSignOutAlt,
+  FaTrash,
+} from "react-icons/fa";
+import Button from "../../ui/Button";
+import Link from "next/link";
 
 const accountItems = [
   {
-    key: 'status',
-    title: 'Account Status',
-    desc: 'Premium Member',
-    icon: <FaCrown className="text-yellow-500 text-xl mr-3" />,
-    descClass: 'text-green-600 font-medium',
-    type: 'status',
+    key: "status",
+    title: "Account Status",
+    desc: "Premium Member",
+    icon: <FaCrown className="mr-3 text-xl text-yellow-500" />,
+    descClass: "text-green-600 font-medium",
+    type: "status",
+    link:'/overview/account'
   },
   {
-    key: 'subscription',
-    title: 'Subscription Details',
-    desc: 'Manage billing and plans',
-    icon: <FaCreditCard className="text-gray-500 text-xl mr-3" />,
-    type: 'link',
+    key: "subscription",
+    title: "Subscription Details",
+    desc: "Manage billing and plans",
+    icon: <FaCreditCard className="mr-3 text-xl text-gray-500" />,
+    type: "link",
+    link:'/overview/subscription'
   },
   {
-    key: 'data',
-    title: 'Data Management',
-    desc: 'Export or delete your data',
-    icon: <FaDatabase className="text-gray-500 text-xl mr-3" />,
-    type: 'link',
+    key: "data",
+    title: "Data Management",
+    desc: "Export or delete your data",
+    icon: <FaDatabase className="mr-3 text-xl text-gray-500" />,
+    type: "link",
+    link:'/overview/account'
   },
 ];
 
 export default function AccountManagement() {
-  const router = useRouter()
-  const handleLogout = async ()=>{
-    await fetch('/api/logout',{method:'POST'});
-    router.push('/login');
-  }
+  const router = useRouter();
+  const handleLogout = async () => {
+    await fetch("/api/logout", { method: "POST" });
+    router.push("/login");
+  };
   return (
-    <div className="mb-24 rounded-lg border border-gray-200 bg-white p-6 shadow-sm ">
-      <h2 className="text-lg font-semibold text-gray-900 mb-4">Account Management</h2>
-      <div className="space-y-4 mb-4">
+    <div className="mb-24 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+      <h2 className="mb-4 text-lg font-semibold text-gray-900">
+        Account Management
+      </h2>
+      <div className="mb-4 space-y-4">
         {accountItems.map((item, idx) => (
-          <div key={item.key} className="flex items-center justify-between p-2">
+          <Link
+            href={item.link}
+            key={item.key}
+            className="flex cursor-pointer items-center justify-between border-b border-gray-100 py-3 transition-colors hover:bg-gray-50"
+          >
             <div className="flex items-center">
               {item.icon}
               <div>
-                <div className="text-base font-semibold text-gray-900 flex items-center gap-2">{item.title}
-                  {item.type === 'status' && (
-                    <span className={`ml-2 text-xs px-2 py-1 rounded-full bg-yellow-50 border border-yellow-200 text-yellow-700 font-semibold`}> {/* visually hidden, for status only */}</span>
-                  )}
+                <div className="flex items-center gap-2 text-base font-semibold text-gray-900">
+                  {item.title}
                 </div>
-                <div className={item.descClass ? item.descClass + ' text-sm' : 'text-sm text-gray-500'}>{item.desc}</div>
+                <div
+                  className={
+                    item.descClass
+                      ? item.descClass + " text-sm"
+                      : "text-sm text-gray-500"
+                  }
+                >
+                  {item.desc}
+                </div>
               </div>
             </div>
-            {item.type !== 'status' && <FaChevronRight className="text-gray-400" />}
-          </div>
+            <FaChevronRight className="text-gray-400" />
+          </Link>
         ))}
       </div>
-      <button className="cursor-pointer w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-lg text-base transition-colors mb-4" onClick={handleLogout}>
+      <Button
+        className="mb-4 flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-4 text-base font-semibold text-white transition-colors hover:bg-red-700"
+        onClick={handleLogout}
+      >
         <FaSignOutAlt className="text-lg" />
         Logout
-      </button>
-      <button className="cursor-pointer w-full flex items-center justify-center gap-2 border-2 border-red-200 text-red-600 font-semibold py-4 rounded-lg text-base transition-colors bg-white hover:bg-red-50">
+      </Button>
+      <Button className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-red-200 bg-white py-4 text-base font-semibold text-red-600 transition-colors hover:bg-red-50">
         <FaTrash className="text-lg" />
         Delete Account
-      </button>
+      </Button>
     </div>
   );
 }
